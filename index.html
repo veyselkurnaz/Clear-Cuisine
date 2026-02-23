@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Cuisine — Cooking, Simplified.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF9500;
+            --bg-light: #FBFBFD;
+            --text-main: #1D1D1F;
+            --text-secondary: #6E6E73;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(0, 0, 0, 0.05);
+            --radius-ios: 22px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 64px;
+            background: rgba(251, 251, 253, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 19px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-box {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #FFB74D, #FF9500);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(255, 149, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .lang-select {
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+            background: #fff;
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        header.hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #1d1d1f 0%, #434345 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.tagline {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+
+        .hero p.desc {
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .app-store-btn {
+            background-color: #000;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .app-store-btn:active {
+            transform: scale(0.96);
+        }
+
+        .app-store-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Features */
+        .features {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 32px;
+            border-radius: var(--radius-ios);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* FAQ */
+        .faq {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px 24px;
+        }
+
+        .faq h2 {
+            font-size: 34px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        .faq-item h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 0.5px solid var(--card-border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero p.tagline {
+                font-size: 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                </div>
+                Clear Cuisine
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" data-i18n="nav_gallery">Gallery</a></li>
+                <li><a href="#" data-i18n="nav_faq">FAQ</a></li>
+                <li><a href="#" data-i18n="nav_support">Support</a></li>
+                <li>
+                    <select class="lang-select" id="languageSelector">
+                        <option value="en">English</option>
+                        <option value="tr">Türkçe</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 data-i18n="hero_title">Cooking, Simplified.</h1>
+        <p class="tagline" data-i18n="hero_subtitle">Your recipes, clean and always at hand. 100% Offline.</p>
+        <p class="desc" data-i18n="hero_description">Clear Cuisine automatically removes ads and clutter from any recipe link, leaving you with just what matters: the ingredients and instructions.</p>
+        
+        <a href="#" class="app-store-btn">
+            <svg class="app-store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span data-i18n="cta_download">Download on the App Store</span>
+        </a>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <span class="feature-icon">✨</span>
+            <h3 data-i18n="feature_1_title">No Ads, No Clutter</h3>
+            <p data-i18n="feature_1_desc">No more scrolling past life stories and pop-ups just to reach the recipe.</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">📸</span>
+            <h3 data-i18n="feature_2_title">Social Saves, Organized</h3>
+            <p data-i18n="feature_2_desc">Copy a caption from any social app and your recipe is saved forever.</p>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🧠</span>
+            <h3 data-i18n="feature_3_title">Apple Intelligence</h3>
+            <p data-i18n="feature_3_desc">Secure, on-device AI handles the extraction without ever sending your data to the cloud.</p>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h4 data-i18n="faq_q1">Is Clear Cuisine free?</h4>
+            <p data-i18n="faq_a1">You can save up to 10 recipes for free. Upgrade to Plus for unlimited access.</p>
+        </div>
+        <div class="faq-item">
+            <h4 data-i18n="faq_q2">Does it work without internet?</h4>
+            <p data-i18n="faq_a2">Yes! Once a recipe is extracted, it is stored locally on your device for offline access.</p>
+        </div>
+        <div class="faq-item">
+            <h4 data-i18n="faq_q3">Is my data private?</h4>
+            <p data-i18n="faq_a3">Absolutely. Extraction happens on your device using Apple's local AI models. No external servers.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p data-i18n="footer_rights">© 2026 Clear Cuisine. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const TRANSLATIONS_PATH = 'translations.json';
+        let currentLang = 'en';
+        let translations = {};
+
+        async function initI18n() {
+            try {
+                const response = await fetch(TRANSLATIONS_PATH);
+                translations = await response.json();
+                
+                // Set initial language from browser or default
+                const browserLang = navigator.language.split('-')[0];
+                if (translations[browserLang]) {
+                    currentLang = browserLang;
+                }
+                
+                document.getElementById('languageSelector').value = currentLang;
+                updateContent();
+            } catch (error) {
+                console.error('Translation error:', error);
+            }
+        }
+
+        function updateContent() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+            document.documentElement.lang = currentLang;
+        }
+
+        document.getElementById('languageSelector').addEventListener('change', (e) => {
+            currentLang = e.target.value;
+            updateContent();
+        });
+
+        initI18n();
+    </script>
+</body>
+</html>
